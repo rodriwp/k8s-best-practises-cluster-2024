@@ -1,4 +1,4 @@
 projects:
   - name: iac-provisioning-backends
     dir: terraform/iac-provisioning-backends
-    include_patterns: ["modules/**"]
+    include_patterns: ["./modules/**"]
