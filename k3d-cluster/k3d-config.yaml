@@ -1,0 +1,53 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: bare-metal
+servers: 3
+agents: 0
+network: bare-metal
+kubeAPI:
+  host: "bare-metal.rodrigomompo.com"
+  hostIP: 127.0.0.1
+  hostPort: "6443"
+image: rancher/k3s:v1.28.5-k3s1
+volumes:
+  - volume: /tmp:/tmp/k3d-nodes
+    nodeFilters:
+      - all
+ports:
+  - port: :8080:80
+    nodeFilters:
+      - loadbalancer
+  - port: :8443:443
+    nodeFilters:
+      - loadbalancer
+
+registries:
+  create:
+    name: bare-metal-registry.localhost
+    host: 127.0.0.1
+    hostPort: random
+
+options:
+  k3d:
+    wait: true
+    timeout: 6m0s
+    disableLoadbalancer: false
+    disableImageVolume: false
+    disableRollback: false
+  k3s:
+    extraArgs:
+      - arg: --tls-san=bare-metal.rodrigomompo.com
+        nodeFilters:
+          - server:*
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:*
+    nodeLabels: []
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true
+  runtime:
+    gpuRequest: ""
+    serversMemory: "8GB"
+    agentsMemory: ""
