@@ -9,7 +9,7 @@ terraform {
 
 locals {
   common_tags = {
-    Service    = "Lynceus IaC Backend"
+    Service    = "IaC Backend"
     Automation = "Bootstrap"
   }
 }
@@ -20,12 +20,12 @@ provider "aws" {
 
 variable "bucket_id" {
   type = string
-  default = "digger-s3backend-iac-provisioning-backends"
+  default = "digger-rmompo-s3backend-iac-provisioning-backends"
 }
 
 variable "dynamo_lock_table_id" {
   type = string
-  default = "digger-locktable-iac-provisioning-backends"
+  default = "digger-rmompo-locktable-iac-provisioning-backends"
 }
 
 resource "aws_s3_bucket" "bucket" {
