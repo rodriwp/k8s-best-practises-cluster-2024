@@ -1,6 +1,6 @@
 locals {
   common_tags = {
-    Service    = "Lynceus IaC Backend"
+    Service    = "IaC Backend"
     Automation = "Terraform"
   }
 }
