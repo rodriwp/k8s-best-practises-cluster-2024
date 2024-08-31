@@ -22,7 +22,7 @@ jobs:
       - name: Checkout code 🛎
         uses: actions/checkout@v4
       - name: Digger Run
-        uses: diggerhq/digger@v0.6.38
+        uses: diggerhq/digger@v0.2.0
         with:
           setup-opentofu: true
           setup-aws: true
