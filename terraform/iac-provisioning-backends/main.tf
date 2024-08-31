@@ -7,6 +7,10 @@ locals {
 
 provider "aws" {
   region = "eu-west-2"
+  assume_role {
+    role_arn = "arn:aws:iam::${var.account_id}:role/automation-deployment-role"
+  }
+
 }
 
 module "automation_group" {
