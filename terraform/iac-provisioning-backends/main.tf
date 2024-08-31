@@ -10,7 +10,7 @@ provider "aws" {
 }
 
 module "automation_group" {
-  source   = "./modules/terraform-backend"
+  source   = "modules/terraform-backend"
   for_each = toset(var.backend_names_list)
   backend_name     = each.value
 }
