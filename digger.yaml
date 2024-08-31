@@ -1,0 +1,4 @@
+projects:
+  - name: iac-provisioning-backends
+    dir: iac-provisioning-backends
+    include_patterns: ["modules/**"]
