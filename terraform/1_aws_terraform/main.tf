@@ -126,9 +126,6 @@ module "eks" {
     }
   }
 
-
-  manage_aws_auth_configmap = false #Managed externally to avoid provider issues and facilitate maintainability
-
   eks_managed_node_groups = {
     eks_cluster_node_group = {
       name = local.name
