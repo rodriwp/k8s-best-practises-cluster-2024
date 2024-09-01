@@ -1,0 +1,4 @@
+bucket         = "digger-s3backend-rmompo-aws-eks"
+dynamodb_table = "digger-locktable-rmompo-aws-eks"
+key    = "terraform/state-managed-cloud-1-k8s-eu-west-2"
+region = "eu-west-2"
