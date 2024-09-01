@@ -170,7 +170,6 @@ module "eks" {
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
         }
       }
-      tags = local.tags
     }
   }
 
