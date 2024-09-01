@@ -1,0 +1,4 @@
+bucket = "digger-rmompo-s3backend-iac-provisioning-backends"
+dynamodb_table = "digger-rmompo-locktable-iac-provisioning-backends"
+key    = "terraform/state"
+region = "eu-west-2"

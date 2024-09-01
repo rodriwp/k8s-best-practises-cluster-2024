@@ -1,9 +1,6 @@
 name: "AWS Terraform Deploy"
 description: "init, plan, and deploy terraform"
 inputs:
-  TF_API_TOKEN:
-    description: "TF Cloud token to access resources"
-    required: true
   AWS_ACCESS_KEY_ID:
     description: "AWS_ACCESS_KEY_ID to deploy the resources"
     required: true
@@ -27,11 +24,10 @@ runs:
   using: "composite"
   steps:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+    - name: Setup OpenTofu (Terraform)
+      uses: opentofu/setup-opentofu@v1
       with:
-        cli_config_credentials_token: ${{ inputs.TF_API_TOKEN }}
-        terraform_version: 1.6.6
+        tofu_version: 1.6.0
 
     - name: Setup Terraform variables
       shell: bash
