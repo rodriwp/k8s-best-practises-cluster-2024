@@ -27,7 +27,7 @@ runs:
     - name: Setup OpenTofu (Terraform)
       uses: opentofu/setup-opentofu@v1
       with:
-        tofu_version: 1.6.0
+        tofu_version: 1.8.1
 
     - name: Setup Terraform variables
       shell: bash
