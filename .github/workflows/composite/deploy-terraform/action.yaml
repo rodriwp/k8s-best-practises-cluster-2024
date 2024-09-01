@@ -43,7 +43,7 @@ runs:
       env:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY}}
-      run: terraform init -backend-config="backend_config/${{ inputs.environment }}/${{ inputs.region }}/config.tfbackend" --reconfigure
+      run: tofu init -backend-config="backend_config/${{ inputs.environment }}/${{ inputs.region }}/config.tfbackend" --reconfigure
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
