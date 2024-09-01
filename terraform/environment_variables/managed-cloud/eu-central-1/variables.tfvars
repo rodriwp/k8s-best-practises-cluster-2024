@@ -10,6 +10,3 @@ instance_type                = ["m5a.large"]
 vpc_cidr                     = "10.30.0.0/16"
 public_subnets               = ["10.30.0.0/20", "10.30.16.0/20", "10.30.32.0/20"]
 private_subnets              = ["10.30.128.0/20", "10.30.144.0/20", "10.30.160.0/20"]
-k8s_backend_s3_bucket        = "digger-s3backend-aws-eks"
-k8s_backend_dynamodb_table   = "digger-locktable-aws-eks"
-k8s_backend_s3_bucket_region = "eu-west-2"
