@@ -2,4 +2,6 @@ bucket         = "digger-s3backend-aws-eks"
 dynamodb_table = "digger-locktable-aws-eks"
 key            = "terraform/state-managed-cloud-1-k8s-eu-west-2"
 region         = "eu-west-2"
-assume_role    = { role_arn = ""arn:aws:iam::659411004637:role/automation-deployment-role"" }
+assume_role    = {
+    role_arn = ""arn:aws:iam::659411004637:role/automation-deployment-role""
+}
