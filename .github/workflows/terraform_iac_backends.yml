@@ -44,7 +44,7 @@ jobs:
   terraform-apply-all:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
-    if: github.event.inputs.applyTerraform == 'true' && github.event.inputs.onEnvironment == 'all'
+    if: github.event.inputs.applyTerraform == 'true'
     strategy:
       matrix:
         env: [ backends ]
