@@ -14,11 +14,11 @@ provider "kubernetes" {
 data "terraform_remote_state" "common-resources" {
   backend = "s3"
   config = {
-    bucket         = "digger-s3backend-aws-eks"
-    dynamodb_table = "digger-locktable-aws-eks"
+    bucket         = var.k8s_backend_s3_bucket
+    dynamodb_table = var.k8s_backend_dynamodb_table
     key            = "terraform/state-managed-cloud-1-k8s-eu-west-2"
-    region         = "eu-west-2"
-    assume_role    = {
+    region         = var.k8s_backend_s3_bucket_region
+    assume_role = {
       role_arn = "arn:aws:iam::659411004637:role/automation-deployment-role"
     }
   }

@@ -50,3 +50,18 @@ variable "vpc_cidr" {
   description = "The CIDR of the VPC"
   type        = string
 }
+
+variable "k8s_backend_s3_bucket" {
+  description = "AWS S3 backend bucket name"
+  type        = string
+}
+
+variable "k8s_backend_dynamodb_table" {
+  description = "AWS DynamoDB Table for the S3 Backend bucket"
+  type        = string
+}
+
+variable "k8s_backend_s3_bucket_region" {
+  description = "AWS Region Code of the S3 Backend bucket"
+  type        = string
+}
