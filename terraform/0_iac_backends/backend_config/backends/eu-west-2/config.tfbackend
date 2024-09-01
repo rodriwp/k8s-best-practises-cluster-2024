@@ -3,5 +3,5 @@ dynamodb_table = "digger-rmompo-locktable-iac-provisioning-backends"
 key            = "terraform/state"
 region         = "eu-west-2"
 assume_role    = {
-    role_arn = ""arn:aws:iam::659411004637:role/automation-deployment-role""
+    role_arn = ""arn:aws:iam::659411004637:role/automation-deployment-role"",
 }
