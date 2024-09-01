@@ -73,7 +73,7 @@ jobs:
           workingDirectory: ./terraform/${{ env.entrypoint}}
 
   terraform-apply-one-env:
-    name: 'Terraform Apply'
+    name: 'Terraform Apply to ${{ github.event.inputs.onEnvironment}}'
     runs-on: ubuntu-latest
     if: github.event.inputs.applyTerraform == 'true' && github.event.inputs.onEnvironment != 'all'
     strategy:
