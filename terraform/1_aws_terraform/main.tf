@@ -159,6 +159,7 @@ module "eks" {
       tags                    = local.tags
     }
   }
+
   access_entries = {
     # One access entry with a policy associated
     MompoAdminAccess = {
