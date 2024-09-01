@@ -1,16 +1,16 @@
 terraform {
-  required_version = "1.6.6"
+  required_version = ">=1.8.1"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">=5.5.0"
+      version = ">=5.65.0"
     }
     tls = {
       source  = "hashicorp/tls"
-      version = ">= 4.0.3"
+      version = ">= 4.053"
     }
   }
 
-  backend "remote" {}
+  backend "s3" {}
 }
