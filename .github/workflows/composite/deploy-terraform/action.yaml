@@ -49,7 +49,7 @@ runs:
     - name: Terraform Format
       working-directory: ${{ inputs.workingDirectory }}
       shell: bash
-      run: terraform fmt -check -recursive
+      run: opentofu fmt -check -recursive
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
@@ -59,7 +59,7 @@ runs:
       env:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY}}
-      run: terraform plan
+      run: opentofu plan
 
     # Generates an execution plan for Terraform and applies it
     - name: Terraform Apply
@@ -69,4 +69,4 @@ runs:
       env:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY}}
-      run: terraform apply -auto-approve
+      run: opentofu apply -auto-approve
