@@ -1,4 +1,4 @@
-name: AWS Terraform
+name: ☁️ AWS Terraform S3 Backends
 on:
   workflow_dispatch:
     inputs:

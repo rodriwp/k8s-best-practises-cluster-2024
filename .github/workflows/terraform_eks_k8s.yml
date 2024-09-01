@@ -1,4 +1,4 @@
-name: AWS Terraform K8s
+name: ☁️ AWS Terraform K8s Config
 on:
   workflow_dispatch:
     inputs:
