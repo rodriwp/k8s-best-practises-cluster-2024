@@ -9,10 +9,10 @@ locals {
   name                             = "${var.account_name}-${var.region_code}-eks"
   region                           = var.region
   cluster_version                  = "1.30"
-  coredns_addon_version            = "v1.10.1-eksbuild.6"
-  kube-proxy_addon_version         = "v1.27.1-eksbuild.1"
-  vpc-cni_addon_version            = "v1.16.0-eksbuild.1"
-  aws-ebs-csi-driver_addon_version = "v1.26.1-eksbuild.1"
+  coredns_addon_version            = "v1.11.1-eksbuild.11"
+  kube-proxy_addon_version         = "v1.30.0-eksbuild.3"
+  vpc-cni_addon_version            = "v1.18.3-eksbuild.2"
+  aws-ebs-csi-driver_addon_version = "v1.34.0-eksbuild.1"
   tags = {
     env        = var.account_name
     managed-by = "terraform"
