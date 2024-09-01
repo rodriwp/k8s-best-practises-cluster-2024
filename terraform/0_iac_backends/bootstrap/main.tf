@@ -19,18 +19,18 @@ provider "aws" {
 }
 
 variable "bucket_id" {
-  type = string
+  type    = string
   default = "digger-rmompo-s3backend-iac-provisioning-backends"
 }
 
 variable "dynamo_lock_table_id" {
-  type = string
+  type    = string
   default = "digger-rmompo-locktable-iac-provisioning-backends"
 }
 
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_id
-  tags = local.common_tags
+  tags   = local.common_tags
 }
 
 resource "aws_s3_bucket_versioning" "bucket" {
@@ -50,9 +50,9 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
 }
 
 resource "aws_dynamodb_table" "bucketLockTable" {
-  name             = var.dynamo_lock_table_id
-  billing_mode     = "PAY_PER_REQUEST"
-  hash_key         = "LockID"
+  name         = var.dynamo_lock_table_id
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
 
   attribute {
     name = "LockID"
