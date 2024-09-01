@@ -159,6 +159,21 @@ module "eks" {
       tags                    = local.tags
     }
   }
+  access_entries = {
+    # One access entry with a policy associated
+    MompoAdminAccess = {
+      kubernetes_groups = []
+      principal_arn     = "arn:aws:iam::${var.account_id}:role/MompoAdminAccess"
+
+      policy_associations = {
+        example = {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+        }
+      }
+      tags = local.tags
+    }
+  }
+
   cluster_enabled_log_types = []
   tags                      = local.tags
 }
