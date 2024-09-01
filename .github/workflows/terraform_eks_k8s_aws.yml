@@ -23,7 +23,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 env:
-  entrypoint: 0_aws_terraform
+  entrypoint: 1_aws_terraform
 
 jobs:
   terraform-plan-all:
