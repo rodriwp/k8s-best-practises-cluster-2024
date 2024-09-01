@@ -42,7 +42,7 @@ resource "aws_eip" "nat" {
 }
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.65.0"
+  version = "5.13.0"
 
   name                                 = "kubernetes-vpc"
   azs                                  = data.aws_availability_zones.available.names
