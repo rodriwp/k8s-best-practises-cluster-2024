@@ -42,7 +42,7 @@ resource "aws_eip" "nat" {
 }
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.0.0"
+  version = "5.65.0"
 
   name                                 = "kubernetes-vpc"
   azs                                  = data.aws_availability_zones.available.names
@@ -73,7 +73,7 @@ module "vpc" {
 ################################################################################
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "19.15.3"
+  version = "20.24.0"
 
   cluster_name                    = local.name
   cluster_version                 = local.cluster_version
@@ -180,7 +180,7 @@ resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSServicePolicy" {
 
 module "iam_eks_role_vpc_cni_irsa" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.33.0"
+  version = "5.44.0"
 
   role_name             = "${var.account_name}-${var.region_code}-eks-role-vpc-cni-irsa"
   attach_vpc_cni_policy = true
@@ -196,7 +196,7 @@ module "iam_eks_role_vpc_cni_irsa" {
 
 module "ebs_csi_irsa_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.33.0"
+  version = "5.44.0"
 
   role_name             = "${var.account_name}-${var.region_code}-eks-role-ebs-csi"
   attach_ebs_csi_policy = true
@@ -212,7 +212,7 @@ module "ebs_csi_irsa_role" {
 
 module "node_termination_handler_irsa_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "5.33.0"
+  version = "5.44.0"
 
   role_name                              = "${var.account_name}-${var.region_code}-eks-role-node-termination-handler"
   attach_node_termination_handler_policy = true
