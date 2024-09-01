@@ -1,0 +1,64 @@
+name: 🪓 Destroy K8s Cluster
+on:
+  workflow_dispatch:
+    inputs:
+      applyTerraform:
+        description: "Run Terraform Apply Destroy"
+        required: true
+        default: false
+        type: boolean
+      onEnvironment:
+        type: choice
+        description: "Environments to perform terraform apply"
+        options:
+          - managed-cloud
+        required: true
+        default: managed-cloud
+
+env:
+  entrypoint: 1_aws_terraform
+
+jobs:
+  terraform-plan-destroy-one-env:
+    name: 'Terraform Plan Destroy of ${{ github.event.inputs.onEnvironment}}'
+    runs-on: ubuntu-latest
+    if: github.event.inputs.applyTerraform != 'true'
+    strategy:
+      matrix:
+        region: [eu-central-1]
+      fail-fast: false
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Plan AWS terraform
+        uses: ./.github/workflows/composite/destroy-terraform
+        with:
+          region: ${{ matrix.region}}
+          environment: ${{ github.event.inputs.onEnvironment}}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          runApply: false
+          workingDirectory: ./terraform/${{ env.entrypoint}}
+
+  terraform-apply-destroy-one-env:
+    name: 'Terraform Apply Destroy of ${{ github.event.inputs.onEnvironment}}'
+    runs-on: ubuntu-latest
+    if: github.event.inputs.applyTerraform == 'true'
+    strategy:
+      matrix:
+        region: [ eu-central-1 ]
+      fail-fast: false
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Plan AWS terraform
+        uses: ./.github/workflows/composite/destroy-terraform
+        with:
+          region: ${{ matrix.region}}
+          environment: ${{ github.event.inputs.onEnvironment}}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          runApply: true
+          workingDirectory: ./terraform/${{ env.entrypoint}}

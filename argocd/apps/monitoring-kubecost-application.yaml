@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  name: monitoring-kubecost-application
+  namespace: argocd
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kubecost
+  project: observability
+  source:
+    path: argocd/apps-manifests/monitoring-kubecost
+    repoURL: 'https://github.com/rodriwp/tfm'
+    helm:
+      releaseName: kubecost
+      valueFiles:
+      - 'values.yaml'
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

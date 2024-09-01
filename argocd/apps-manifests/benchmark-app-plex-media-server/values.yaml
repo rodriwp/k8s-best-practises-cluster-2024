@@ -1,0 +1,11 @@
+plex-media-server:
+  ingress:
+    enabled: true
+    # note put a domain name that points to your ip address here
+    url: https://plex.k8s.rodrigomompo.com
+    ingressClassName: nginx
+  pms:
+    extraEnv:
+    # This claim is optional, and is only used for the first startup of PMS
+    # The claim is obtained from https://www.plex.tv/claim/ is is only valid for a few minutes
+       PLEX_CLAIM: "claim"

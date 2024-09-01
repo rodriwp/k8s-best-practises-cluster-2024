@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  name: cluster-resources-ingress-nginx-application
+  namespace: argocd
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-system
+  project: cluster-resources
+  source:
+    path: argocd/apps-manifests/cluster-resources-ingress-nginx
+    repoURL: 'https://github.com/rodriwp/tfm'
+    helm:
+      releaseName: ingress-nginx
+      valueFiles:
+      - 'values.yaml'
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      selfHeal: true
+      prune: true
